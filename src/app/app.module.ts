@@ -1,9 +1,10 @@
+import { TokenInterceptor } from './token.interceptor';
 import { AuthService } from './auth.service';
 import { ServicosPrestadosService } from './servicos-prestados.service';
 import { ServicosPrestadosModule } from './servicos-prestados/servicos-prestados.module';
 import { ClientesService } from './clientes.service';
 import { ClientesModule } from './clientes/clientes.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -35,7 +36,12 @@ import { LayoutComponent } from './layout/layout.component';
   providers: [
     ClientesService,
     ServicosPrestadosService,
-    AuthService
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
