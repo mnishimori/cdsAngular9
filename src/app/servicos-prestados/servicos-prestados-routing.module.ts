@@ -3,12 +3,14 @@ import { ServicosPrestadosListaComponent } from './servicos-prestados-lista/serv
 import { ServicosPrestadosFormComponent } from './servicos-prestados-form/servicos-prestados-form.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth.guard';
 
 
 const routes: Routes = [
   {
     path: 'servicos-prestados',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'form',

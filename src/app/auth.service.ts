@@ -57,4 +57,17 @@ export class AuthService {
 
     return null;
   }
+
+  encerrarSessao(){
+    localStorage.removeItem("access_token");
+  }
+
+  recuperarUsuarioAutenticado(): string {
+    const token = this.obterToken();
+    if (token) {
+      const usuario: string = this.jwtHelper.decodeToken(token).user_name;
+      return usuario;
+    }
+    return null;
+  }
 }

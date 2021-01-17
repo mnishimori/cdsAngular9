@@ -3,12 +3,14 @@ import { ClientesListaComponent } from './clientes-lista/clientes-lista.componen
 import { ClientesFormComponent } from './clientes-form/clientes-form.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../auth.guard';
 
 
 const routes: Routes = [
   { 
     path: 'clientes', 
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'form',
