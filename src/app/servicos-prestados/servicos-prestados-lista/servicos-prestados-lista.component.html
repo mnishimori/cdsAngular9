@@ -1,0 +1,74 @@
+<h1 class="mt-4">Serviço Prestado</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+</ol>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-warning" (click)="novoCadastro()">
+                <i class="fa fa-plus"></i> Novo
+            </button>
+        </div>
+    </div>
+
+    <br/>
+
+    <form #form="ngForm" (submit)="consultar()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert" *ngIf="message">
+                    {{ message }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="inputNome">Cliente:</label>
+                    <input type="text" class="form-control" 
+                        [(ngModel)]="nome"
+                        name="nome" id="inputNome">
+                </div>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-search"></i>
+                     Pesquisar
+                </button>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data cadastro</th>
+                            <th>Cliente</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let servicoPrestado of servicosPrestados">
+                            <td>{{ servicoPrestado.id }}</td>
+                            <td>{{ servicoPrestado.dataCadastro }}</td>
+                            <td>{{ servicoPrestado.cliente.nome }}</td>
+                            <td>{{ servicoPrestado.descricao }}</td>
+                            <td>{{ servicoPrestado.valor }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
