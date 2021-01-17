@@ -33,19 +33,8 @@ export class AuthService {
     
     return this.http.post( this.tokenUrl, params.toString(), { headers });
   }
-  /*
-  tentarLogar(username: string, password: string): Observable<any> {
-    const params = new HttpParams()
-      .set("username", username)
-      .set("password", password)
-      .set("grant_type", "password");
 
-    const headers = {
-      'Authorization' : 'Basic ' + btoa(`${this.clientId}:${this.clientSecret}`),
-      'Content-Type' : 'application/x-www-form-urlencoded'
-    };
-    console.log(this.tokenUrl);
-    return this.http.post(this.tokenUrl, params.toString , { headers });
+  isAuthenticated(): boolean {
+    return false;
   }
-  */
 }
